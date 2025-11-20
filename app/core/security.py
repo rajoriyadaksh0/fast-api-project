@@ -5,7 +5,7 @@ from app.core.config import settings
 def create_token(data: dict,expire_time=10):
     to_encode=data.copy()
     expire= datetime.now(timezone.utc) + timedelta(minutes=expire_time)
-    to_encode.update({'exp':expire})
+    to_encode.update({'exp_time':expire})
     return jwt.encode(
         to_encode, settings.JWT_SECRET_KEY, algorithm=settings.JWT_ALGORITHM
     )
